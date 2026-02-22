@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MegaPrep | Academic Coaching Institute</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #0b4dbb;
+      --primary-dark: #083991;
+      --accent: #ff8a00;
+      --bg: #f4f8ff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --success: #16a34a;
+      --max: 1140px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", "Roboto", Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    .section { padding: 72px 0; }
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 700;
+      margin: 0 0 10px;
+      color: #111827;
+    }
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto 36px;
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      gap: 20px;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--primary);
+      letter-spacing: 0.2px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+      font-size: 0.95rem;
+      color: #374151;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+      padding: 12px 20px;
+      transition: 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(11, 77, 187, 0.24);
+    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+    .btn-accent { background: var(--accent); color: #fff; }
+    .btn-accent:hover { filter: brightness(0.95); transform: translateY(-1px); }
+
+    .btn-ghost {
+      background: #fff;
+      color: var(--primary);
+      border: 1.5px solid #cfe0ff;
+    }
+
+    /* Hero */
+    .hero {
+      background:
+        linear-gradient(95deg, rgba(8,57,145,.88), rgba(11,77,187,.78)),
+        url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80') center/cover;
+      color: #fff;
+      padding: 96px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .hero p { margin: 0 0 26px; font-size: 1.08rem; opacity: 0.95; }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .hero-card {
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,.24);
+      border-radius: 16px;
+      padding: 22px;
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-card h3 { margin: 0 0 12px; }
+
+    .mini-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .mini-stat {
+      background: rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+
+    .mini-stat strong { font-size: 1.2rem; display: block; }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 10px 24px rgba(17, 24, 39, 0.06);
+    }
+
+    .check-list { list-style: none; padding: 0; margin: 16px 0 0; }
+    .check-list li { margin: 10px 0; padding-left: 28px; position: relative; }
+    .check-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    /* Courses */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .course-card h3 { margin: 0 0 8px; }
+    .meta {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 6px;
+    }
+
+    /* Teachers */
+    .teacher-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(130deg, var(--primary), #4f87eb);
+      margin-bottom: 12px;
+    }
+
+    /* Results */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .kpi {
+      text-align: center;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .kpi strong {
+      display: block;
+      font-size: 2rem;
+      color: var(--primary);
+      line-height: 1.1;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    /* Routine + Notices */
+    .two-col {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 18px;
+    }
+
+    .notice-list { margin: 0; padding-left: 18px; }
+    .notice-list li { margin: 10px 0; }
+
+    /* Registration */
+    form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    input, select {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 13px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      background: #fff;
+    }
+
+    input:focus, select:focus { border-color: #9dc0ff; box-shadow: 0 0 0 3px #eaf1ff; }
+
+    .full { grid-column: 1 / -1; }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 18px;
+    }
+
+    .map {
+      border: 0;
+      width: 100%;
+      min-height: 280px;
+      border-radius: 12px;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .socials a {
+      font-size: 0.9rem;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    footer {
+      background: #0f172a;
+      color: #e5e7eb;
+      margin-top: 70px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 18px;
+      padding: 45px 0 26px;
+    }
+
+    .footer-title { font-size: 1rem; font-weight: 600; margin-bottom: 10px; color: #fff; }
+
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,0.14);
+      padding: 12px 0 20px;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      nav ul { display: none; }
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .teacher-grid, .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-grid, .about-grid, .two-col, .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .section { padding: 56px 0; }
+      .cards-grid, .teacher-grid, .testimonial-grid, .kpi-grid { grid-template-columns: 1fr; }
+      form { grid-template-columns: 1fr; }
+      .nav-wrap { min-height: 64px; }
+      .hero { padding: 72px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="home">
+    <div class="container nav-wrap">
+      <a class="logo" href="#home">MegaPrep</a>
+      <nav aria-label="Main Navigation">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#teachers">Teachers</a></li>
+          <li><a href="#results">Results</a></li>
+          <li><a href="#routine">Class Routine</a></li>
+          <li><a href="#notice">Notice</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn-accent" href="#registration">Enroll Now</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1>Your Success Starts with MegaPrep</h1>
+        <p>Best Coaching for SSC, HSC &amp; Admission Preparation.</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="#courses">View Courses</a>
+          <a class="btn btn-ghost" href="#registration">Join Free Class</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <h3>MegaPrep at a Glance</h3>
+        <div class="mini-stats">
+          <div class="mini-stat"><strong>2,500+</strong><span>Students Enrolled</span></div>
+          <div class="mini-stat"><strong>120+</strong><span>GPA-5 Achievers</span></div>
+          <div class="mini-stat"><strong>92%</strong><span>Admission Success</span></div>
+          <div class="mini-stat"><strong>15+</strong><span>Expert Teachers</span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container about-grid">
+      <div class="card">
+        <h2 class="section-title">About MegaPrep</h2>
+        <p>MegaPrep is a trusted academic coaching institute focused on SSC, HSC, Engineering, and University Admission preparation. Our structured programs and mentoring culture help students build confidence and achieve outstanding results.</p>
+        <h3>Mission</h3>
+        <p>To deliver affordable, high-quality coaching that turns potential into measurable success.</p>
+        <h3>Vision</h3>
+        <p>To become the most reliable preparation institute for ambitious students nationwide.</p>
+      </div>
+      <div class="card">
+        <h3>Why Choose MegaPrep</h3>
+        <ul class="check-list">
+          <li>Experienced Teachers</li>
+          <li>Small Batch System</li>
+          <li>Weekly Exams & Performance Reports</li>
+          <li>Result-Oriented Teaching Method</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="courses" style="text-align:center;">
+    <div class="container">
+      <h2 class="section-title">Our Courses</h2>
+      <p class="section-subtitle">Choose your target program and start preparing with clear planning and guided support.</p>
+      <div class="cards-grid">
+        <article class="card course-card">
+          <h3>SSC Batch</h3>
+          <p class="meta">Duration: 12 Months</p>
+          <p class="meta">Subjects: Bangla, English, Math, Science</p>
+          <a class="btn btn-primary" href="#registration">Enroll</a>
+        </article>
+        <article class="card course-card">
+          <h3>HSC Batch</h3>
+          <p class="meta">Duration: 18 Months</p>
+          <p class="meta">Subjects: Physics, Chemistry, Math, ICT</p>
+          <a class="btn btn-primary" href="#registration">Enroll</a>
+        </article>
+        <article class="card course-card">
+          <h3>Engineering Admission</h3>
+          <p class="meta">Duration: 8 Months</p>
+          <p class="meta">Subjects: Math, Physics, Chemistry, English</p>
+          <a class="btn btn-primary" href="#registration">Enroll</a>
+        </article>
+        <article class="card course-card">
+          <h3>University Admission</h3>
+          <p class="meta">Duration: 8 Months</p>
+          <p class="meta">Subjects: GK, English, Subject-based Prep</p>
+          <a class="btn btn-primary" href="#registration">Enroll</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="teachers" style="text-align:center;">
+    <div class="container">
+      <h2 class="section-title">Our Teachers</h2>
+      <p class="section-subtitle">Highly qualified and supportive mentors dedicated to student excellence.</p>
+      <div class="teacher-grid">
+        <article class="card">
+          <div class="avatar">AR</div>
+          <h3>Dr. A. Rahman</h3>
+          <p class="meta">Subject: Physics</p>
+          <p class="meta">Experience: 12 Years</p>
+        </article>
+        <article class="card">
+          <div class="avatar">ST</div>
+          <h3>Ms. S. Tasnim</h3>
+          <p class="meta">Subject: Mathematics</p>
+          <p class="meta">Experience: 9 Years</p>
+        </article>
+        <article class="card">
+          <div class="avatar">HK</div>
+          <h3>Mr. H. Karim</h3>
+          <p class="meta">Subject: English</p>
+          <p class="meta">Experience: 10 Years</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="results" style="text-align:center;">
+    <div class="container">
+      <h2 class="section-title">Results & Achievements</h2>
+      <div class="kpi-grid">
+        <div class="kpi"><strong>120+</strong><span>GPA-5 Students</span></div>
+        <div class="kpi"><strong>350+</strong><span>Engineering Admissions</span></div>
+        <div class="kpi"><strong>210+</strong><span>Top University Selections</span></div>
+      </div>
+      <div class="testimonial-grid">
+        <blockquote class="card">“MegaPrep’s weekly tests helped me improve fast. I got GPA-5 in SSC!” — <strong>Rafi</strong></blockquote>
+        <blockquote class="card">“The small batch classes and mentoring were excellent for admission prep.” — <strong>Nusrat</strong></blockquote>
+        <blockquote class="card">“I secured my place in a top engineering university thanks to MegaPrep.” — <strong>Tanvir</strong></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="routine">
+    <div class="container two-col">
+      <div class="card">
+        <h2 class="section-title">Class Routine</h2>
+        <p>Download the latest weekly class routine to stay organized and attend all scheduled sessions.</p>
+        <a class="btn btn-primary" href="#" aria-label="Download weekly class routine">Download Weekly Routine</a>
+      </div>
+      <div class="card" id="notice">
+        <h2 class="section-title">Latest Notices</h2>
+        <ul class="notice-list">
+          <li>Admission test model class starts from 10 January.</li>
+          <li>Monthly guardian meeting on Saturday at 4:00 PM.</li>
+          <li>SSC mock test schedule has been updated.</li>
+          <li>Scholarship exam registration deadline: 25 February.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="registration">
+    <div class="container card">
+      <h2 class="section-title">Free Demo Class Registration</h2>
+      <p class="section-subtitle" style="margin: 0 0 20px;">Fill up the form to book your free class and counseling session.</p>
+      <form>
+        <input type="text" placeholder="Name" required />
+        <input type="tel" placeholder="Phone" required />
+        <select required>
+          <option value="">Select Class</option>
+          <option>SSC</option>
+          <option>HSC</option>
+          <option>Admission Candidate</option>
+        </select>
+        <select required>
+          <option value="">Course Interested</option>
+          <option>SSC Batch</option>
+          <option>HSC Batch</option>
+          <option>Engineering Admission</option>
+          <option>University Admission</option>
+        </select>
+        <button class="btn btn-accent full" type="submit">Register for Free Class</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container contact-grid">
+      <div class="card">
+        <h2 class="section-title">Contact MegaPrep</h2>
+        <p><strong>Address:</strong> 123 Academic Avenue, Dhaka, Bangladesh</p>
+        <p><strong>Phone:</strong> +880 1711-000000, +880 1811-000000</p>
+        <p><strong>Email:</strong> info@megaprep.edu</p>
+        <div class="socials">
+          <a href="#" aria-label="MegaPrep Facebook">Facebook</a>
+          <a href="#" aria-label="MegaPrep YouTube">YouTube</a>
+        </div>
+      </div>
+      <div class="card">
+        <iframe
+          class="map"
+          title="MegaPrep Location"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://maps.google.com/maps?q=Dhaka%20Bangladesh&t=&z=11&ie=UTF8&iwloc=&output=embed">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-title">MegaPrep</div>
+        <p>Professional coaching for SSC, HSC, Engineering, and University admission aspirants.</p>
+      </div>
+      <div>
+        <div class="footer-title">Quick Links</div>
+        <p><a href="#home">Home</a></p>
+        <p><a href="#courses">Courses</a></p>
+        <p><a href="#teachers">Teachers</a></p>
+        <p><a href="#contact">Contact</a></p>
+      </div>
+      <div>
+        <div class="footer-title">Courses</div>
+        <p>SSC Batch</p>
+        <p>HSC Batch</p>
+        <p>Engineering Admission</p>
+        <p>University Admission</p>
+      </div>
+    </div>
+    <div class="container copyright">© 2026 MegaPrep. All Rights Reserved.</div>
+  </footer>
+</body>
+</html>
